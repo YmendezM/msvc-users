@@ -11,14 +11,13 @@ import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT})
-@RequestMapping("/v1")
+@RestController
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
+    @GetMapping
     public List<User> findAll(){
         return  userService.findAllList();
     };
