@@ -29,13 +29,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-
     public User save(User user) {
         return userRepository.save(user);
     }
 
     @Override
-    @Transactional(readOnly = true)
     public void deleteById(Long id) {
        userRepository.deleteById(id);
     }

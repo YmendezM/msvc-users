@@ -15,6 +15,5 @@ public interface UserService {
 
     User save(User user);
 
-    @Transactional(readOnly = true)
     void deleteById(Long id);
 }

@@ -45,7 +45,7 @@ public class UserController {
            User userCurrent =  userOptional.get();
            userCurrent.setName(user.getName());
            userCurrent.setEmail(user.getEmail());
-           return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
+           return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(userCurrent));
         }
         return (ResponseEntity<?>) ResponseEntity.notFound().build();
     }
@@ -58,7 +58,7 @@ public class UserController {
             userService.deleteById(id);
             return ResponseEntity.noContent().build();
         }
-        return (ResponseEntity<?>) ResponseEntity.notFound().build();
+        return ResponseEntity.notFound().build();
     }
 
 
