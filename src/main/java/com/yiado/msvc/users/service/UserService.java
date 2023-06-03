@@ -9,11 +9,7 @@ import java.util.Optional;
 public interface UserService {
 
     List<User> findAllList();
-    @Transactional(readOnly = true)
     Optional<User> findById(Long id);
-
-
     User save(User user);
-
     void deleteById(Long id);
 }
