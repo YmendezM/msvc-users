@@ -5,17 +5,20 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name="Users")
+@Table(name="USERS")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="ID")
     private Long id;
     @NotEmpty
+    @Column(name="NAME")
     private String name;
     @NotEmpty
     @Email
-    private String Email;
+    @Column(name="EMAIL")
+    private String email;
 
     public Long getId() {
         return id;
@@ -34,10 +37,10 @@ public class User {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        email = email;
     }
 }
