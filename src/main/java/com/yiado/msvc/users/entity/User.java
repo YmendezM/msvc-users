@@ -15,6 +15,7 @@ public class User {
     @NotEmpty
     @Column(name="NAME")
     private String name;
+
     @NotEmpty
     @Email
     @Column(name="EMAIL")
@@ -41,6 +42,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        email = email;
+        this.email = email;
     }
+
 }
