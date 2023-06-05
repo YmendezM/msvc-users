@@ -36,6 +36,11 @@ public class UserController {
         return (ResponseEntity<?>) ResponseEntity.notFound().build();
     };
 
+    @GetMapping("/find-all-by-id")
+    public ResponseEntity<?> findAllById(@RequestParam List<Long>  ids){
+            return ResponseEntity.ok(userService.findAllById(ids));
+    };
+
     @PostMapping
     //@ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?>  create(@Valid @RequestBody User user, BindingResult result){

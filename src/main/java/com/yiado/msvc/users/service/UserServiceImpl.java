@@ -28,6 +28,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<User> findAllById(Iterable<Long> ids) {
+        return (List<User>) userRepository.findAllById(ids);
+    }
+
+    @Override
     @Transactional
     public User save(User user) {
         return userRepository.save(user);
