@@ -1,5 +1,6 @@
 package com.yiado.msvc.users.controller;
 
+import com.yiado.msvc.users.client.EventClientRest;
 import com.yiado.msvc.users.entity.User;
 import com.yiado.msvc.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

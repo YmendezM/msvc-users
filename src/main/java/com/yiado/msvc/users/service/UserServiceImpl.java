@@ -1,5 +1,6 @@
 package com.yiado.msvc.users.service;
 
+import com.yiado.msvc.users.client.EventClientRest;
 import com.yiado.msvc.users.entity.User;
 import com.yiado.msvc.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private EventClientRest eventClientRest;
 
     @Override
     @Transactional(readOnly = true)
@@ -43,5 +47,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void deleteById(Long id) {
        userRepository.deleteById(id);
+       eventClientRest.deleteUserEvent(id);
+
     }
 }
