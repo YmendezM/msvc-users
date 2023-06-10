@@ -2,8 +2,8 @@ FROM openjdk:8u322-slim
 
 WORKDIR /app
 
-COPY ./out/artifacts/msvc_users_jar/msvc-users.jar .
+COPY ./target/msvc-users-0.0.1-SNAPSHOT.jar .
 
 EXPOSE 8001
 
-ENTRYPOINT ["java", "-jar", "msvc-users.jar"]
+ENTRYPOINT ["java", "-jar", "msvc-users-0.0.1-SNAPSHOT.jar"]
