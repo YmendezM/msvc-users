@@ -17,7 +17,7 @@ RUN ./mvnw clean package -DskipTests
 FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
-
+RUN mkdir ./logs
 COPY --from=builder /msvc-users/target/msvc-users-0.0.1-SNAPSHOT.jar .
 EXPOSE 8001
 
