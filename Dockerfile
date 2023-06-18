@@ -1,4 +1,4 @@
-FROM openjdk:8u322-slim
+FROM openjdk:8u322-slim as builder
 
 WORKDIR /msvc-users
 
@@ -14,6 +14,11 @@ COPY ./msvc-users/src ./src
 
 RUN ./mvnw clean package -DskipTests
 
+FROM openjdk:17-jdk-alpine
+
+WORKDIR /app
+
+COPY --from=builder /msvc-usuarios/target/msvc-users-0.0.1-SNAPSHOT.jar .
 EXPOSE 8001
 
-ENTRYPOINT ["java", "-jar", "./target/msvc-users-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "msvc-users-0.0.1-SNAPSHOT.jar"]
