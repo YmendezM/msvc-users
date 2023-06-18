@@ -18,7 +18,7 @@ FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
 
-COPY --from=builder /msvc-usuarios/target/msvc-users-0.0.1-SNAPSHOT.jar .
+COPY --from=builder /msvc-users/target/msvc-users-0.0.1-SNAPSHOT.jar .
 EXPOSE 8001
 
 ENTRYPOINT ["java", "-jar", "msvc-users-0.0.1-SNAPSHOT.jar"]
