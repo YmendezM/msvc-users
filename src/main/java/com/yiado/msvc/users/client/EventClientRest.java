@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 //call docker container -  local
 //@FeignClient(name="msvc-events", url="host.docker.internal:8002")
 //call Docker container - Docker container
-@FeignClient(name="msvc-events", url="msvc-events:8002")
+//@FeignClient(name="msvc-events", url="msvc-events:8002")
+//call Docker container - Docker container - Variable config
+@FeignClient(name="msvc-events", url="${msvc.events.url}")
 public interface EventClientRest {
 
     @DeleteMapping("/delete-user-event/{id}")
