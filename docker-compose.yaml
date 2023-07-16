@@ -6,7 +6,7 @@ services:
     ports:
       - "3307:3306"
     environment:
-      MYSQL_ROOT_PASSWORD:
+      MYSQL_ROOT_PASSWORD: 
       MYSQL_DATABASE: msvc_users
     volumes:
       - data-users:/var/lib/mysql
@@ -26,6 +26,9 @@ services:
       - flipando
   msvc-users:
     container_name: msvc-users
+    build:
+      context: ./
+      dockerfile: ../msvc-users/Dockerfile
     image: users
     ports:
       - "8001:8001"
@@ -37,6 +40,9 @@ services:
     restart: always
   #msvc-events:
   #  container_name: msvc-events
+  #  build:
+  #    context: ./
+  #    dockerfile: ../msvc-events/Dockerfile
   #  image: events
   #  ports:
   #    - "8002:8002"
