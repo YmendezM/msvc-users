@@ -1,0 +1,64 @@
+version: "3.9"
+services:
+  mysql-users:
+    container_name: mysql-users
+    image: mysql:8
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: msvc_users
+    volumes:
+      - data-users:/var/lib/mysql
+    networks:
+      - flipando
+  mysql-events:
+    container_name: mysql-events
+    image: mysql:8
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: msvc_events
+    volumes:
+      - data-events:/var/lib/mysql
+    networks:
+      - flipando
+  msvc-users:
+    container_name: msvc-users
+    image: users
+    ports:
+      - "8001:8001"
+    env_file: .env
+    networks:
+      - flipando
+    depends_on:
+      - mysql-users
+    restart: always
+  #msvc-events:
+  #  container_name: msvc-events
+  #  image: events
+  #  ports:
+  #    - "8002:8002"
+  #  env_file: ../msvc-events/.env
+  #  networks:
+  #    - flipando
+  #  depends_on:
+  #    - mysql-events
+  #  restart: always
+volumes:
+  data-users:
+    name: data-users
+  data-events:
+    name: data-events
+networks:
+  flipando:
+    name: flipando
+
+
+
+
+
+
+
+
